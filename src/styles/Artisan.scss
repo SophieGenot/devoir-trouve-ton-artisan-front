@@ -1,0 +1,41 @@
+.artisan-card {
+  background-color: #F1F8FC;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: rgba(0,0,0,0.05);
+    filter: blur(50px);
+    z-index: 0;
+  }
+
+  h2, p, .btn {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.btn-contact {
+  background-color: #CD2C2E;
+  color: white;
+}
+
+.btn-outline-contact {
+  border: 2px solid #CD2C2E;
+  color: #CD2C2E;
+  background: transparent;
+}
+
+.contact-card {
+  background-color: #F1F8FC;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
