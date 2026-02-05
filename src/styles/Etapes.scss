@@ -1,89 +1,104 @@
-@media (max-width: 1024px) {
-  .steps {
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  
+  @media (max-width: 1024px) {
     flex-wrap: wrap;
     justify-content: center;
   }
-}
-
-.steps {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-end;
-  flex-wrap: nowrap;
-
-.step-card h5,
-.step-card p,
-.step-card .step-icon {
-  position: relative;
-  z-index: 2;
-}
 
   .step-card {
-    position: relative;
-    background: #0074C7;
     border-radius: 8px;
-    padding: 1.2rem 1.5rem 1.2rem 4.5rem;
+    padding: 1.2rem 1.5rem;
     color: white;
-    overflow: hidden;
     width: 220px;
     height: 110px;
-
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: visible; 
 
-    overflow: visible;
-
-    /* Numéro */
     .step-number {
-  position: absolute;
-  font-weight: 900;
-  color: #384050;
-  line-height: 1;
-}
+      position: absolute;
+      font-weight: 900;
+      line-height: 1;
+      color: inherit;
+      z-index: 1;
+    }
 
-.step-card:nth-child(1) .step-number {
-  font-size: 7rem;
-  bottom: -10px;
-  left: 10px;
-}
+    .step-icon {
+      position: absolute;
+      z-index: 0;
 
-.step-card:nth-child(2) .step-number {
-  font-size: 7rem;
-  top: -15px;
-  left: 10px;
-}
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
 
-.step-card:nth-child(3) .step-number {
-  font-size: 9rem;
-  right: -20px;
-  top: -30px;
-  opacity: 0.25;
-  z-index: 0;
-}
+    /* Étape 1 : Loupe */
+    &:nth-child(1) {
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        right: 4px;
+        top: 22px;
+        z-index: 2;
+      }
+    }
 
-    /* Icône */
-   .step-icon {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
-  width: 32px;
-  height: 32px;
-}
+    /* Étape 2 : Artisan */
+    &:nth-child(2) {
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        bottom: 5px;
+        right: 5px;
+        z-index: 0;
+      }
+    }
 
-.step-icon img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+   /* Étape 3 : Formulaire */
+    &:nth-child(3) {
+      .step-icon {
+       width: 1O0px;
+       height: 100px;
+       bottom: 0;          
+       right: 0;
+       transform: rotate(50deg);
+       z-index: 1;          
+      }
+      .step-number {
+       overflow: hidden;
+       z-index: 2;          
+      }
+   }
 
+    &:nth-child(4) {
+      overflow: hidden; 
+      .step-icon {
+        width: 20px;
+        height: 240px;
+        bottom: -30px;
+        right: -30px;
+      }
+    }
+
+     h5,
+    p {
+      position: relative;
+      z-index: 2;
+    }
 
     h5 {
       font-size: 0.8rem;
       font-weight: 700;
-      text-transform: none;
       margin-bottom: 0.3rem;
-      z-index: 1;
     }
 
     p {
@@ -91,7 +106,6 @@
       line-height: 1.2;
       margin: 0;
       opacity: 0.95;
-      z-index: 1;
     }
   }
 }

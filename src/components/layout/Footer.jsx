@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "../../styles/Home.scss";
 const Footer = () => {
   return (
     <footer className="footer py-4">
@@ -12,10 +14,10 @@ const Footer = () => {
           <p>CS 20033</p>
         </div>
         <div className="legalmention">
-          <p>Accessibilité</p>
-          <p>Mentions légales</p>
-          <p>Cookies</p>
-          <p>Données personnelles</p>
+          <p><Link to="/construction">Accessibilité</Link></p>
+          <p><Link to="/construction">Mentions légales</Link></p>
+          <p><Link to="/construction">Cookies</Link></p>
+          <p><Link to="/construction">Données personnelles</Link></p>
         </div>
       </div>
     </footer>

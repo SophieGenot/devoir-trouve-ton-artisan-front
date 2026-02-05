@@ -1,0 +1,49 @@
+// page Construction
+.construction-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.construction-content {
+  background: url("/assets/img/construction.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; 
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+}
+// page NotFound
+.error-content {
+  position: relative;          
+  min-height: 70vh;          
+  display: flex;
+  flex-direction: column;      
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-image: url("/assets/img/404.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* overlay pour opacité */
+.error-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 1; 
+}
+
+.error-content h1,
+.error-content p,
+.error-content .btn-home {
+  position: relative;
+  z-index: 2;
+}

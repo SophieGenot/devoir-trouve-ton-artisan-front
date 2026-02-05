@@ -26,11 +26,14 @@
 .btn-contact {
   background-color: #CD2C2E;
   color: white;
+  text-decoration: none;
 }
 
 .btn-outline-contact {
+  text-decoration: none;
   border: 2px solid #CD2C2E;
-  color: #CD2C2E;
+  border-radius: 10px;
+  color: black;
   background: transparent;
 }
 

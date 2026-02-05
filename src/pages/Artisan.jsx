@@ -5,26 +5,32 @@ import Footer from "../components/layout/Footer";
 import "../styles/Home.scss";
 import "../styles/Artisan.scss";
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  alert("✅ Votre message a bien été envoyé !");
+};
+
+
 const Artisan = () => {
-  const { id } = useParams(); // <-- récupère l'id de l'URL
+  const { id_artisan } = useParams(); 
   const [artisan, setArtisan] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchArtisan = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/artisans/${id}`);
+        const res = await fetch(`http://localhost:3000/api/artisans/${id_artisan}`);
         const data = await res.json();
-        console.log("DATA API :", data);
+        console.log("DATA API :", data); 
         setArtisan(data);
-        setLoading(false);
       } catch (err) {
         console.error("Erreur API :", err);
+      } finally {
         setLoading(false);
       }
     };
     fetchArtisan();
-  }, [id]); // <-- dépend de l'id
+  }, [id_artisan]);
 
   if (loading) return <p>Chargement...</p>;
   if (!artisan) return <p>Artisan introuvable</p>;
@@ -33,11 +39,9 @@ const Artisan = () => {
     <div className="artisan-page">
       <Header />
 
-      <section
-        className="artisan-card p-4 my-4"
-        style={{ backgroundColor: "#F1F8FC", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}
-      >
+      <section className="artisan-card p-4 my-4">
         <div className="row align-items-center">
+          {/* Image de l'artisan */}
           <div className="col-md-4">
             <img
               src={artisan.photo || "/images/default-artisan.jpg"}
@@ -45,25 +49,42 @@ const Artisan = () => {
               className="img-fluid rounded"
             />
           </div>
+
           <div className="col-md-6">
             <h2>{artisan.nom}</h2>
+            <p> {artisan.specialite?.nom_specialite || "Spécialité inconnue"} </p>
             <p>
-              ⭐ {artisan.note} | {artisan.specialite?.nom_specialite} | {artisan.ville}
+              ⭐ {artisan.note || "N/A"} 
             </p>
-            <p>{artisan.a_propos}</p>
+            <p className=" gap-2 align-items">
+          <img
+            src="/assets/icons/localisation.svg"
+            alt="Localisation"
+           style={{ width: "16px", height: "16px" }} />
+         {artisan.ville || "Ville inconnue"}
+         </p>
+
+            <p>{artisan.a_propos || "Aucune description disponible."}</p>
           </div>
+
+          {/* Actions */}
           <div className="col-md-2 d-flex flex-column gap-2">
-            <a href={`mailto:${artisan.email}`} className="btn btn-primary">
-              Contacter
-            </a>
-            <a href={artisan.site_web} target="_blank" rel="noreferrer" className="btn btn-outline-primary">
-              Site web
-            </a>
+              {artisan.site_web && (
+              <a href={artisan.site_web} target="_blank" rel="noreferrer" className="btn btn-contact">
+                Voir le site web </a>
+            )}
+            
+            <a href={`*`} className="btn-outline-contact">
+              Voir le portfolio</a>
+
           </div>
         </div>
       </section>
 
-      <section className="contact-card p-4 my-4" style={{ backgroundColor: "#F1F8FC", boxShadow: "0 4px 20px rgba(0,0,0,0.1)" }}>
+      {/* Formulaire de contact */}
+      <section
+        className="contact-card p-4 my-4">
+        <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-6">
             <input type="text" placeholder="Nom" className="form-control mb-2" />
@@ -72,16 +93,27 @@ const Artisan = () => {
             <input type="tel" placeholder="Téléphone" className="form-control mb-2" />
           </div>
           <div className="col-md-6">
-            <select multiple className="form-control mb-2">
-              <option>Demande de devis</option>
-              <option>Renseignements</option>
-              <option>Disponibilité</option>
-              <option>Autre</option>
+            <select className="form-control mb-2">
+               <option value="" disabled selected>
+                Objet :
+               </option>
+               <option value="devis">Demande de devis</option>
+               <option value="renseignements">Renseignements</option>
+               <option value="disponibilite">Disponibilité</option>
+               <option value="autre">Autre</option>
             </select>
-            <textarea placeholder="Descriptif rapide de la commande" className="form-control" rows={6}></textarea>
+
+            <textarea
+              placeholder="Descriptif rapide de la commande"
+              className="form-control"
+              rows={6}
+            ></textarea>
           </div>
         </div>
-        <button className="btn btn-primary mt-3">Envoyer</button>
+        <button type="submit" className="btn btn-contact mt-3">
+          Envoyer
+        </button>
+        </form>
       </section>
 
       <Footer />
@@ -90,3 +122,5 @@ const Artisan = () => {
 };
 
 export default Artisan;
+
+

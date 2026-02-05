@@ -1,14 +1,27 @@
-header, footer {
+header,
+footer {
   background-color: #82B864;
   color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999; 
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .search-bar {
     display: flex;
+
     input {
       flex-grow: 1;
       border-radius: 50px 0 0 50px;
       border: none;
       padding-left: 1rem;
     }
+
     button {
       background: linear-gradient(64deg, #82B864 0%, #82B864 100%);
       border: none;
@@ -22,4 +35,68 @@ header, footer {
   }
 }
 
+.header .logo img {
+  height: 80px; 
+}
 
+.category-btn {
+  color: white;
+  text-decoration: none;
+}
+
+.desktop-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.mobile-menu-icon {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+
+  span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+  }
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+
+  .category-btn {
+    color: white;
+    text-align: left;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu-icon {
+    display: flex;
+  }
+}
+
+.btn-home {
+  position: relative;
+  z-index: 2;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: #CD2C2E;
+  color: white;
+  text-decoration: none;
+}
