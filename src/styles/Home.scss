@@ -11,9 +11,26 @@ footer {
     text-decoration: none;
     color: inherit;
   }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  background-color: #82B864;
+  color: white;
+  z-index: 999;
+
+  .logo img {
+    height: 80px;
+    cursor: pointer;
+  }
 
   .search-bar {
-    display: flex;
+    margin: 0 1rem;
 
     input {
       flex-grow: 1;
@@ -23,7 +40,7 @@ footer {
     }
 
     button {
-      background: linear-gradient(64deg, #82B864 0%, #82B864 100%);
+      background: #82B864;
       border: none;
       border-radius: 0 50px 50px 0;
       padding: 0 1rem;
@@ -33,52 +50,16 @@ footer {
       font-size: 1.2rem;
     }
   }
-}
 
-.header .logo img {
-  height: 80px; 
-}
+  .desktop-menu {
+    display: flex;
+    gap: 1rem;
 
-.category-btn {
-  color: white;
-  text-decoration: none;
-}
-
-.desktop-menu {
-  display: flex;
-  gap: 1rem;
-}
-
-.mobile-menu-icon {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-
-  span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    transition: 0.3s;
-  }
-}
-
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: #333;
-  display: flex;
-  flex-direction: column;
-  width: 150px;
-  padding: 10px;
-  border-radius: 5px;
-
-  .category-btn {
-    color: white;
-    text-align: left;
-    margin: 5px 0;
+    .category-btn {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
   }
 }
 
@@ -86,8 +67,9 @@ footer {
   .desktop-menu {
     display: none;
   }
-  .mobile-menu-icon {
-    display: flex;
+
+  .search-bar {
+    margin: 0 0.5rem;
   }
 }
 
