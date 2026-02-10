@@ -2,35 +2,35 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import api from '../service/api';
 import "../styles/Home.scss";
 import "../styles/Artisan.scss";
+
 
 const handleSubmit = (e) => {
   e.preventDefault();
   alert("✅ Votre message a bien été envoyé !");
 };
 
-
 const Artisan = () => {
   const { id_artisan } = useParams(); 
   const [artisan, setArtisan] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchArtisan = async () => {
-      try {
-        const res = await fetch(`/api/artisans/${id_artisan}`);
-        const data = await res.json();
-        console.log("DATA API :", data); 
-        setArtisan(data);
-      } catch (err) {
-        console.error("Erreur API :", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchArtisan();
-  }, [id_artisan]);
+
+useEffect(() => {
+  const fetchArtisan = async () => {
+    try {
+      const res = await api.get(`/api/artisans/${id_artisan}`);
+      setArtisan(res.data);
+    } catch (err) {
+      console.error("Erreur API :", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchArtisan();
+}, [id_artisan]);
 
   if (loading) return <p>Chargement...</p>;
   if (!artisan) return <p>Artisan introuvable</p>;
