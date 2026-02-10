@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CardArtisan from "../components/ui/CardArtisans";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
-import api from '../service/api';
+import api from "../service/api";
 import "../styles/Etapes.scss";
 import "../styles/Home.scss";
 
