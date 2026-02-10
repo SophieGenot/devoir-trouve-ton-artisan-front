@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from '../service/api';
 import "../../styles/Home.scss";
 
 const categories = [
@@ -19,7 +19,7 @@ const Header = () => {
     if (!search.trim()) return;
 
     try {
-      const res = await axios.get(
+      const res = await api.get(
         `/api/artisans/search?nom=${search}`
       );
       const artisan = res.data;

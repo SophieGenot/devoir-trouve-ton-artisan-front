@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import CardArtisan from "../components/ui/CardArtisans";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import api from '../service/api';
 import "../styles/Etapes.scss";
 import "../styles/Home.scss";
 
@@ -53,7 +53,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTopArtisans = async () => {
       try {
-        const res = await axios.get('/api/artisans/top');
+        const res = await api.get('/api/artisans/top');
         console.log("Artisans récupérés :", res.data);
         setFeaturedArtisans(res.data);
       } catch (err) {

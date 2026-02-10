@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import CardArtisan from "../components/ui/CardArtisans";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import api from '../service/api';
 import "../styles/Etapes.scss";
 import "../styles/Home.scss";
 
@@ -24,7 +24,7 @@ const Categorie = () => {
   useEffect(() => {
     const fetchArtisans = async () => {
       try {
-        const res = await axios.get(`/api/artisans/by-categorie/${id_categorie}`);
+        const res = await api.get(`/api/artisans/by-categorie/${id_categorie}`);
         setArtisans(res.data);
       } catch (err) {
         console.error("Erreur récupération artisans :", err);
