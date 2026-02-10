@@ -24,7 +24,7 @@ const Categorie = () => {
   useEffect(() => {
     const fetchArtisans = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/artisans/by-categorie/${id_categorie}`);
+        const res = await axios.get(`/api/artisans/by-categorie/${id_categorie}`);
         setArtisans(res.data);
       } catch (err) {
         console.error("Erreur récupération artisans :", err);

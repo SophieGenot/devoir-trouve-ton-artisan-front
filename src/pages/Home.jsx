@@ -53,7 +53,7 @@ const Home = () => {
   useEffect(() => {
     const fetchTopArtisans = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/artisans/top");
+        const res = await axios.get('/api/artisans/top');
         console.log("Artisans récupérés :", res.data);
         setFeaturedArtisans(res.data);
       } catch (err) {

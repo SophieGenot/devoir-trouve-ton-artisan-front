@@ -19,7 +19,7 @@ const Artisan = () => {
   useEffect(() => {
     const fetchArtisan = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/artisans/${id_artisan}`);
+        const res = await fetch(`/api/artisans/${id_artisan}`);
         const data = await res.json();
         console.log("DATA API :", data); 
         setArtisan(data);

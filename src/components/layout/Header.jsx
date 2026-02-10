@@ -20,7 +20,7 @@ const Header = () => {
 
     try {
       const res = await axios.get(
-        `http://localhost:3000/api/artisans/search?nom=${search}`
+        `/api/artisans/search?nom=${search}`
       );
       const artisan = res.data;
       navigate(`/artisan/${artisan.id_artisan}`);
